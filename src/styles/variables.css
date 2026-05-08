@@ -1,0 +1,50 @@
+:root {
+  /* Colors */
+  --steel-dark: #060608;
+  --steel-black: #0a0a0a;
+  --steel-gray: #1a1a1a;
+  --molten-orange: #ff9400;
+  --molten-orange-light: #ffb347;
+  --molten-orange-dark: #e68200;
+  --text-white: #ffffff;
+  --text-gray: #cccccc;
+  --text-gray-light: rgba(255, 255, 255, 0.7);
+  --text-gray-dark: rgba(255, 255, 255, 0.5);
+
+  /* Shadows */
+  --shadow-panel-glow: 0 40px 120px rgba(255, 146, 0, 0.24);
+  --shadow-card: 0 30px 90px rgba(0, 0, 0, 0.4);
+  --shadow-card-hover: 0 50px 140px rgba(255, 140, 0, 0.16);
+
+  /* Gradients */
+  --gradient-molten: linear-gradient(135deg, #ff9400 0%, #f8b13c 100%);
+  --gradient-steel: linear-gradient(135deg, #060608 0%, #1a1a1a 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.04), transparent 28%, rgba(255, 255, 255, 0.03) 62%, transparent);
+
+  /* Transitions */
+  --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-fast: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+
+  /* Border Radius */
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-xl: 36px;
+  --radius-full: 999px;
+
+  /* Typography */
+  --font-weight-light: 100;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+}
