@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import './Navbar.css'
 
@@ -6,12 +6,28 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
+  const [showNavbar, setShowNavbar] = useState(true)
+  const prevScrollY = useRef(0)
 
-  const isNavbarVisible = isHovered || isMobileMenuOpen
+  const isNavbarVisible = isHovered || isMobileMenuOpen || showNavbar
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      const currentY = window.scrollY
+      const heroEl = document.getElementById('hero')
+      const heroBottom = heroEl ? heroEl.offsetTop + heroEl.offsetHeight : 0
+      const isInHero = currentY < heroBottom
+
+      if (isInHero) {
+        setShowNavbar(true)
+      } else if (currentY > prevScrollY.current + 5) {
+        setShowNavbar(false)
+      } else if (currentY < prevScrollY.current - 5) {
+        setShowNavbar(true)
+      }
+
+      setIsScrolled(currentY > heroBottom)
+      prevScrollY.current = currentY
     }
 
     window.addEventListener('scroll', handleScroll)

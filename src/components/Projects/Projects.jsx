@@ -22,7 +22,6 @@ const Projects = () => {
   useEffect(() => {
     let logoTween = null
     const ctx = gsap.context(() => {
-      // Scroll reveal for section
       gsap.fromTo(sectionRef.current,
         { opacity: 0, y: 50 },
         {
@@ -39,11 +38,10 @@ const Projects = () => {
         }
       )
 
-      // Logo loop animation
       if (logoLoopRef.current) {
         logoTween = gsap.to(logoLoopRef.current, {
           xPercent: -50,
-          duration: 24,
+          duration: 18,
           ease: 'none',
           repeat: -1,
           paused: true
@@ -54,12 +52,10 @@ const Projects = () => {
           start: 'top 85%',
           end: 'bottom 15%',
           onEnter: () => logoTween.play(),
-          onEnterBack: () => logoTween.play(),
-          onLeaveBack: () => logoTween.pause(0)
+          onEnterBack: () => logoTween.play()
         })
       }
 
-      // Trust items animation
       gsap.fromTo(trustItemsRef.current,
         { opacity: 0, scale: 0.9 },
         {
@@ -76,7 +72,6 @@ const Projects = () => {
         }
       )
 
-      // Floating particles
       const particles = document.querySelectorAll('.floating-particle')
       particles.forEach((particle, i) => {
         gsap.to(particle, {
@@ -94,7 +89,7 @@ const Projects = () => {
 
     const container = logoContainerRef.current
     const reduceSpeed = () => logoTween && logoTween.timeScale(0.25)
-    const restoreSpeed = () => logoTween && logoTween.timeScale(1)
+    const restoreSpeed = () => logoTween && logoTween.timeScale(0.5)
 
     if (container) {
       container.addEventListener('mouseenter', reduceSpeed)
@@ -118,31 +113,8 @@ const Projects = () => {
     { id: 5, name: 'Rashmi Group', logo: RashmiGrp },
     { id: 6, name: 'RSB', logo: RSB },
     { id: 7, name: 'Sudisa', logo: Sudisa },
-    { id: 8, name: 'Sudisa', logo: Sudisa }
   ]
 
-  const trustData = [
-    {
-      icon: 'fa-users',
-      title: 'Experienced Team',
-      description: 'Skilled professionals with decades of industrial expertise'
-    },
-    {
-      icon: 'fa-cogs',
-      title: 'Advanced Technology',
-      description: 'State-of-the-art equipment and cutting-edge manufacturing'
-    },
-    {
-      icon: 'fa-clock',
-      title: 'Timely Delivery',
-      description: 'Reliable project completion within agreed timelines'
-    },
-    {
-      icon: 'fa-star',
-      title: 'Customer Satisfaction',
-      description: '100% client satisfaction with premium quality results'
-    }
-  ]
 
   return (
     <section ref={sectionRef} id="projects" className="projects-section">
@@ -171,32 +143,13 @@ const Projects = () => {
           <div ref={logoLoopRef} className="logo-loop">
             {clientLogos.concat(clientLogos).map((logo, index) => (
               <div key={index} className="client-logo">
-                <img src={logo.logo} alt={logo.name} loading="lazy" decoding="async" />
+                <img src={logo.logo} alt={logo.name} loading="lazy" />
               </div>
             ))}
           </div>
           <div className="fade-left"></div>
           <div className="fade-right"></div>
         </div>
-
-        {/* Trust Section */}
-        {/* <div className="trust-section">
-          <div className="trust-grid">
-            {trustData.map((item, index) => (
-              <div 
-                key={index}
-                ref={el => trustItemsRef.current[index] = el}
-                className="trust-item"
-              >
-                <div className="trust-icon">
-                  <i className={`fas ${item.icon}`}></i>
-                </div>
-                <h4>{item.title}</h4>
-                <p>{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div> */}
       </div>
     </section>
   )

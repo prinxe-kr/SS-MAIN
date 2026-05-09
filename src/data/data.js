@@ -136,6 +136,6 @@ export const contactInfo = [
   {
     icon: "fa-envelope",
     title: "Email",
-    content: "info@ssenterprises.com"
+    content: "s.senterprises2247@gmail.com"
   }
 ];

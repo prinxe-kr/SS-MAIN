@@ -1,9 +1,8 @@
 .about-stats-row {
-  margin-left: -120px;
-  width: 120%;
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
 }
 
 .about-stat {

@@ -1,8 +1,7 @@
 /* Premium Industrial Projects Section */
 .projects-section {
   position: relative;
-  min-height: 100vh;
-  background: linear-gradient(180deg, #070707 0%, #0f0f0f 100%);
+  height: fit-content;
   color: #ffffff;
   overflow: hidden;
   padding: 120px 0;
@@ -23,11 +22,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;   
-  /* background: 
-    radial-gradient(circle at 20% 80%, rgba(255, 152, 0, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 152, 0, 0.02) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(255, 152, 0, 0.01) 0%, transparent 50%); */
+  height: 100%;
   opacity: 0.8;
 }
 
@@ -37,9 +32,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  /* background: 
-    radial-gradient(ellipse at top left, rgba(255, 152, 0, 0.1) 0%, transparent 70%),
-    radial-gradient(ellipse at bottom right, rgba(255, 152, 0, 0.08) 0%, transparent 70%); */
 }
 
 .floating-particles {
@@ -54,7 +46,6 @@
   position: absolute;
   width: 2px;
   height: 2px;
-  /* background: rgba(255, 152, 0, 0.6); */
   border-radius: 50%;
   box-shadow: 0 0 4px rgba(255, 152, 0, 0.8);
 }
@@ -71,14 +62,14 @@
   left: 0;
   width: 100%;
   height: 100%;
-  /* background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><defs><filter id="noise"><feTurbulence baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter></defs><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.02"/></svg>'); */
   opacity: 0.3;
 }
 
 /* Container */
 .container {
   position: relative;
-  z-index: 2;
+  z-index: 4;
+  background: transparent;
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
@@ -187,7 +178,7 @@
 .logo-loop-container {
   position: relative;
   width: 100%;
-  height: 120px;
+  height: 220px;
   margin-bottom: 6rem;
   overflow: hidden;
   background: transparent;
@@ -215,7 +206,7 @@
 }
 
 .client-logo img {
-  max-height: 96px;
+  max-height: 180px;
   width: auto;
   background: transparent;
   filter: none;
@@ -236,7 +227,7 @@
 .fade-right {
   position: absolute;
   top: 0;
-  width: 220px;
+  width: 120px;
   height: 100%;
   pointer-events: none;
   z-index: 3;
@@ -272,320 +263,55 @@
   background: linear-gradient(to left, rgba(10, 10, 10, 0.8), transparent);
 }
 
-/* Project Showcase */
-.projects-showcase {
-  margin-bottom: 6rem;
-}
 
-.showcase-grid {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 0.8fr;
-  gap: 2rem;
-  align-items: start;
-}
-
-.project-card {
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-}
-
-.project-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255, 152, 0, 0.2);
-}
-
-.large-card {
-  min-height: 600px;
-  grid-row: span 2;
-}
-
-.medium-card {
-  min-height: 400px;
-}
-
-.small-card {
-  min-height: 280px;
-}
-
-.small-cards-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.card-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.6s ease;
-}
-
-.project-card:hover .card-image {
-  transform: scale(1.1);
-}
-
-.card-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.1) 0%,
-    rgba(0, 0, 0, 0.4) 50%,
-    rgba(0, 0, 0, 0.7) 100%
-  );
-  transition: opacity 0.3s ease;
-}
-
-.project-card:hover .card-overlay {
-  opacity: 0.8;
-}
-
-.card-content {
-  position: relative;
-  z-index: 2;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 2rem;
-}
-
-.project-category {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background: rgba(255, 152, 0, 0.2);
-  border: 1px solid rgba(255, 152, 0, 0.4);
-  border-radius: 50px;
-  color: #ff9800;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-  backdrop-filter: blur(10px);
-}
-
-.card-content h3 {
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0 0 1rem 0;
-  line-height: 1.1;
-}
-
-.project-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: rgba(255, 152, 0, 0.9);
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-.project-meta i {
-  font-size: 0.8rem;
-}
-
-.card-glow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, transparent 30%, rgba(255, 152, 0, 0.1) 50%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.project-card:hover .card-glow {
-  opacity: 1;
-}
-
-/* Trust Section */
-.trust-section {
-  margin-top:-100px;
-  padding: 4rem 0;
-}
-
-.trust-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-}
-
-.trust-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(15px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  transition: all 0.3s ease;
-}
-
-.trust-item:hover {
-  transform: translateY(-4px);
-  background: rgba(255, 152, 0, 0.05);
-  border-color: rgba(255, 152, 0, 0.3);
-  box-shadow: 0 10px 30px rgba(255, 152, 0, 0.1);
-}
-
-.trust-icon {
-  width: 80px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, rgba(255, 152, 0, 0.1), rgba(255, 152, 0, 0.05));
-  border: 2px solid rgba(255, 152, 0, 0.3);
-  border-radius: 50%;
-  margin-bottom: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.trust-item:hover .trust-icon {
-  background: linear-gradient(135deg, rgba(255, 152, 0, 0.2), rgba(255, 152, 0, 0.1));
-  border-color: rgba(255, 152, 0, 0.6);
-  transform: scale(1.1);
-}
-
-.trust-icon i {
-  font-size: 2rem;
-  color: #ff9800;
-}
-
-.trust-item h4 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0 0 1rem 0;
-}
-
-.trust-item p {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.7);
-  margin: 0;
-}
 
 /* Responsive Design */
-@media (max-width: 1200px) {
-  .showcase-grid {
-    grid-template-columns: 1.2fr 1fr 0.8fr;
-    gap: 1.5rem;
-  }
-  
-  .large-card {
-    min-height: 500px;
-  }
-  
-  .medium-card {
-    min-height: 350px;
-  }
-  
-  .small-card {
-    min-height: 250px;
-  }
-}
 
 @media (max-width: 1024px) {
   .projects-header {
     grid-template-columns: 1fr;
-    gap: 3rem;
-    text-align: center;
+    gap: 2.5rem;
+    margin-bottom: 4rem;
   }
-  
+
   .header-right {
-    justify-content: center;
+    justify-content: flex-start;
   }
-  
-  .showcase-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+
+  .logo-loop-container {
+    height: 180px;
   }
-  
-  .large-card {
-    min-height: 400px;
-    grid-row: span 1;
-  }
-  
-  .small-cards-stack {
-    flex-direction: row;
-    gap: 1.5rem;
-  }
-  
-  .trust-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+
+  .logo-loop {
+    gap: clamp(1.5rem, 3vw, 3rem);
+    padding: 0 1rem;
   }
 }
 
 @media (max-width: 768px) {
   .projects-section {
-    padding: 80px 0;
+    padding: 90px 0 60px;
   }
-  
-  .container {
-    padding: 0 1rem;
+
+  .header-left {
+    gap: 1.4rem;
   }
-  
-  .projects-header {
-    margin-bottom: 4rem;
-  }
-  
+
   .section-title {
-    font-size: 2.5rem;
+    font-size: clamp(2.4rem, 8vw, 3.6rem);
   }
-  
+
+  .section-description {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
   .logo-loop-container {
-    height: 100px;
-    margin-bottom: 4rem;
+    height: 150px;
   }
-  
-  .logo-loop {
-    gap: 2rem;
-    padding: 0 1rem;
-  }
-  
+
   .client-logo {
     min-width: 100px;
-    width: auto;
-    height: auto;
-  }
-  
-  .projects-showcase {
-    margin-bottom: 4rem;
-  }
-  
-  .small-cards-stack {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  .trust-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  
-  .trust-item {
-    padding: 1.5rem;
   }
 }
 
@@ -595,7 +321,11 @@
   }
   
   .logo-loop-container {
-    height: 80px;
+    height: 110px;
+  }
+  
+  .logo-loop {
+    gap: 1rem;
   }
   
   .client-logo {
@@ -604,15 +334,7 @@
     height: auto;
   }
   
-  .project-card {
-    border-radius: 15px;
-  }
-  
-  .card-content {
-    padding: 1.5rem;
-  }
-  
-  .card-content h3 {
-    font-size: 1.25rem;
+  .projects-header {
+    gap: 1.5rem;
   }
 }

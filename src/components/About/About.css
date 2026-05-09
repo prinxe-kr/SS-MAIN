@@ -1,5 +1,5 @@
 .about {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  background: linear-gradient(135deg, #080808 0%, #121212 42%, #090909 100%);
   padding: 100px 0 50px;
   position: relative;
   overflow: hidden;
@@ -79,15 +79,15 @@
 
 .image-card-large {
   top: 0;
-  left: 0;
+  left: 10%;
   width: 70%;
   height: 420px;
   z-index: 2;
 }
 
 .image-card-medium {
-  top: 160px;
-  left: 22%;
+  top: 260px;
+  left: 0%;
   width: 72%;
   height: 380px;
   z-index: 3;
@@ -96,9 +96,9 @@
 .image-card-small {
   bottom: 0;
   right: 0;
-  width: 62%;
-  height: 340px;
-  z-index: 1;
+  width: 50%;
+  height: 30%;
+  z-index: 4;
 }
 
 .image-tag {
@@ -129,16 +129,16 @@
 }
 
 .image-tag-bottom {
-  bottom: 150px;
+  bottom: 350px;
   left: 56px;
 }
 
 .image-overlay-card {
   position: absolute;
-  top: 36%;
-  right: 4%;
-  width: 240px;
-  height: 240px;
+  top: 41.7%;
+  right: 0%;
+  width: 200px;
+  height: 200px;
   border-radius: var(--radius-xl);
   padding: 32px 28px;
   background: rgba(15, 15, 15, 0.96);
