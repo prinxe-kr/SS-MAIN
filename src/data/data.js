@@ -1,49 +1,46 @@
 export const servicesData = [
   {
-    id: "pre-machining",
-    label: "PRE-MACHINING",
-    headline: "Preparation & Precision Planning",
-    description:
-      "Every industrial component begins with detailed inspection, material preparation, and engineering precision.",
-    highlights: [
-      "Raw Material Inspection",
-      "Blueprint Analysis",
-      "Laser Cutting",
-      "Surface Preparation",
-      "Precision Measurements",
-    ],
-    badge: "fa-microscope",
+    id: 'foundry',
+    icon: 'fa-fire',
+    title: 'Foundry – Pouring',
+    description: 'High-temperature molten metal pouring with precision-controlled industrial foundry operations.'
   },
   {
-    id: "machining",
-    label: "MACHINING",
-    headline: "Core Industrial Manufacturing",
-    description:
-      "Advanced automated steel processing and high-precision fabrication systems power every phase of production.",
-    highlights: [
-      "CNC Milling",
-      "Precision Turning",
-      "Automated Drilling",
-      "Heavy Fabrication",
-      "Industrial Processing",
-    ],
-    badge: "fa-industry",
+    id: 'shot-blasting',
+    icon: 'fa-bullseye',
+    title: 'Shot Blasting',
+    description: 'Advanced abrasive blasting solutions for surface cleaning, finishing, and metal preparation.'
   },
   {
-    id: "post-machining",
-    label: "POST-MACHINING",
-    headline: "Finishing, Inspection & Delivery",
-    description:
-      "Finishing processes, inspection standards, and final delivery create components ready for the most demanding applications.",
-    highlights: [
-      "Surface Finishing",
-      "Heat Treatment",
-      "Quality Inspection",
-      "Powder Coating",
-      "Final Assembly",
-    ],
-    badge: "fa-handshake-simple",
+    id: 'grinding',
+    icon: 'fa-cogs',
+    title: 'Grinding',
+    description: 'Precision grinding processes ensuring smooth finishes, dimensional accuracy, and industrial durability.'
   },
+  {
+    id: 'painting',
+    icon: 'fa-paint-brush',
+    title: 'Painting',
+    description: 'Protective industrial coating and premium paint finishing for corrosion resistance and aesthetics.'
+  },
+  {
+    id: 'drying',
+    icon: 'fa-temperature-high',
+    title: 'Drying',
+    description: 'Controlled thermal drying systems for efficient curing and long-lasting industrial finishing.'
+  },
+  {
+    id: 'pre-machining-lathe',
+    icon: 'fa-tools',
+    title: 'Pre Machining – Lathe Operations',
+    description: 'Initial shaping and precision turning using heavy-duty industrial lathe machines.'
+  },
+  {
+    id: 'machining-cnc',
+    icon: 'fa-industry',
+    title: 'Machining – CNC & VMC Finishing',
+    description: 'High-precision CNC and VMC machining delivering flawless industrial-grade finished components.'
+  }
 ];
 
 export const aboutFeatures = [

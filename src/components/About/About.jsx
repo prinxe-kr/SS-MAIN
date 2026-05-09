@@ -65,21 +65,21 @@ const About = () => {
                 whileHover={{ scale: 1.02, y: -5 }}
                 transition={{ duration: 0.3 }}
               >
-                <img src={industrialImg} alt="Industrial Construction" />
+                <img src={industrialImg} alt="Industrial Construction" loading="lazy" decoding="async" />
               </motion.div>
               <motion.div
                 className="image-card image-card-medium"
                 whileHover={{ scale: 1.02, y: -5 }}
                 transition={{ duration: 0.3 }}
               >
-                <img src={weldingImg} alt="Steel Welding" />
+                <img src={weldingImg} alt="Steel Welding" loading="lazy" decoding="async" />
               </motion.div>
               <motion.div
                 className="image-card image-card-small"
                 whileHover={{ scale: 1.02, y: -5 }}
                 transition={{ duration: 0.3 }}
               >
-                <img src={grindingImg} alt="Industrial Team" />
+                <img src={grindingImg} alt="Industrial Team" loading="lazy" decoding="async" />
               </motion.div>
 
               <div className="image-tag image-tag-top">

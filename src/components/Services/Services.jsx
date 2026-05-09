@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 import { servicesData } from '../../data/data'
 import './Services.css'
 
 const Services = () => {
-  const [activeCard, setActiveCard] = useState(null)
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -14,7 +13,7 @@ const Services = () => {
           setIsVisible(true)
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.15 }
     )
 
     const element = document.getElementById('services')
@@ -23,40 +22,25 @@ const Services = () => {
     return () => observer.disconnect()
   }, [])
 
-  const handleCardInteraction = (index) => {
-    if (window.innerWidth <= 768) {
-      // Mobile: tap to toggle
-      setActiveCard(activeCard === index ? null : index)
-    } else {
-      // Desktop: hover to activate
-      setActiveCard(index)
-    }
-  }
-
-  const handleMouseLeave = () => {
-    if (window.innerWidth > 768) {
-      setActiveCard(null)
-    }
-  }
-
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
+      y: 0,
       transition: {
-        duration: 0.8,
-        staggerChildren: 0.2
+        duration: 0.85,
+        staggerChildren: 0.12
       }
     }
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 24 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.65,
         ease: 'easeOut'
       }
     }
@@ -69,87 +53,43 @@ const Services = () => {
           className="services-intro"
           variants={containerVariants}
           initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
+          animate={isVisible ? 'visible' : 'hidden'}
         >
           <motion.p variants={itemVariants}>OUR SERVICES</motion.p>
-          <motion.h2 variants={itemVariants}>
-            Industrial Process & Premium Steel Services
-          </motion.h2>
-          <motion.p
-            className="services-subtitle"
-            variants={itemVariants}
-          >
-            
+          <motion.h2 variants={itemVariants}>Premium Steel Manufacturing Process</motion.h2>
+          <motion.p className="services-subtitle" variants={itemVariants}>
+            Precision-engineered industrial solutions across every stage of manufacturing.
           </motion.p>
         </motion.div>
 
         <motion.div
-          className="services-panels"
-          onMouseLeave={handleMouseLeave}
+          className="services-grid"
           variants={containerVariants}
           initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
+          animate={isVisible ? 'visible' : 'hidden'}
         >
           {servicesData.map((service, index) => (
-            <motion.div
+            <motion.article
               key={service.id}
-              className={`premium-service-card ${activeCard === index ? 'active' : ''}`}
-              onMouseEnter={() => window.innerWidth > 768 && handleCardInteraction(index)}
-              onClick={() => handleCardInteraction(index)}
+              className="service-card"
               variants={itemVariants}
-              whileHover={window.innerWidth > 768 ? { scale: 1.02 } : {}}
-              transition={{ duration: 0.3 }}
+              whileHover={{ y: -8, scale: 1.01 }}
+              transition={{ duration: 0.35, ease: 'easeOut' }}
             >
-              <div className="card-ambient"></div>
-              <div className="card-edge-glow"></div>
-
-              <div className="card-vertical-title">
-                <div className="vertical-text">{service.label}</div>
+              <div className="service-card-top">
+                <span className="service-card-icon">
+                  <i className={`fas ${service.icon}`}></i>
+                </span>
+                <h3>{service.title}</h3>
               </div>
 
-              <div className="card-shell">
-                <div className="card-header">
-                  <span className="service-badge">
-                    <i className={`fas ${service.badge}`}></i>
-                  </span>
-                  <div className="service-mini-label">PROCESS SEQUENCE</div>
-                </div>
+              <p className="service-card-copy">{service.description}</p>
 
-                <div>
-                  <h3 className="service-headline">{service.headline}</h3>
-                  <p className="service-description">{service.description}</p>
-                </div>
-
-                <AnimatePresence>
-                  {activeCard === index && (
-                    <motion.div
-                      className="service-content"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 20 }}
-                      transition={{ duration: 0.4, ease: 'easeOut' }}
-                    >
-                      <ul className="service-list">
-                        {service.highlights.map((item, idx) => (
-                          <motion.li
-                            key={idx}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: idx * 0.1, duration: 0.3 }}
-                          >
-                            <span></span>
-                            <strong>{item}</strong>
-                          </motion.li>
-                        ))}
-                      </ul>
-                      <p className="service-caption">
-                        Industrial visuals layer molten steel, sparks, laser scanning and premium assembly craftsmanship.
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+              <div className="service-card-cta">
+                <span>Learn More</span>
+                <span className="cta-arrow">→</span>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </motion.div>
       </div>

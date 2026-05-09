@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { projectsData } from '../../data/data'
 import './Projects.css'
 import Sot from './projectassets/Sot.png'
 import Amalgam from './projectassets/amalgam.png'
@@ -17,9 +16,11 @@ gsap.registerPlugin(ScrollTrigger)
 const Projects = () => {
   const sectionRef = useRef(null)
   const logoLoopRef = useRef(null)
+  const logoContainerRef = useRef(null)
   const trustItemsRef = useRef([])
 
   useEffect(() => {
+    let logoTween = null
     const ctx = gsap.context(() => {
       // Scroll reveal for section
       gsap.fromTo(sectionRef.current,
@@ -40,33 +41,21 @@ const Projects = () => {
 
       // Logo loop animation
       if (logoLoopRef.current) {
-        const logos = logoLoopRef.current.querySelectorAll('.client-logo')
-        gsap.set(logos, { filter: 'grayscale(100%)' })
-        
-        gsap.to(logoLoopRef.current, {
-          x: '-50%',
-          duration: 20,
+        logoTween = gsap.to(logoLoopRef.current, {
+          xPercent: -50,
+          duration: 24,
           ease: 'none',
-          repeat: -1
+          repeat: -1,
+          paused: true
         })
 
-        logos.forEach(logo => {
-          logo.addEventListener('mouseenter', () => {
-            gsap.to(logo, {
-              scale: 1.1,
-              filter: 'grayscale(0%)',
-              boxShadow: '0 0 20px rgba(255, 152, 0, 0.5)',
-              duration: 0.3
-            })
-          })
-          logo.addEventListener('mouseleave', () => {
-            gsap.to(logo, {
-              scale: 1,
-              filter: 'grayscale(100%)',
-              boxShadow: 'none',
-              duration: 0.3
-            })
-          })
+        ScrollTrigger.create({
+          trigger: logoContainerRef.current,
+          start: 'top 85%',
+          end: 'bottom 15%',
+          onEnter: () => logoTween.play(),
+          onEnterBack: () => logoTween.play(),
+          onLeaveBack: () => logoTween.pause(0)
         })
       }
 
@@ -103,7 +92,22 @@ const Projects = () => {
       })
     }, sectionRef)
 
-    return () => ctx.revert()
+    const container = logoContainerRef.current
+    const reduceSpeed = () => logoTween && logoTween.timeScale(0.25)
+    const restoreSpeed = () => logoTween && logoTween.timeScale(1)
+
+    if (container) {
+      container.addEventListener('mouseenter', reduceSpeed)
+      container.addEventListener('mouseleave', restoreSpeed)
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener('mouseenter', reduceSpeed)
+        container.removeEventListener('mouseleave', restoreSpeed)
+      }
+      ctx.revert()
+    }
   }, [])
 
   const clientLogos = [
@@ -143,19 +147,6 @@ const Projects = () => {
   return (
     <section ref={sectionRef} id="projects" className="projects-section">
       {/* Background Effects */}
-      <div className="industrial-bg">
-        <div className="steel-texture"></div>
-        <div className="orange-glow"></div>
-        <div className="floating-particles">
-          <div className="floating-particle"></div>
-          <div className="floating-particle"></div>
-          <div className="floating-particle"></div>
-          <div className="floating-particle"></div>
-          <div className="floating-particle"></div>
-        </div>
-        <div className="noise-overlay"></div>
-      </div>
-
       <div className="container">
         {/* Top Header */}
         <div className="projects-header">
@@ -163,9 +154,8 @@ const Projects = () => {
             <span className="section-subtitle">OUR PROJECTS</span>
             <h2 className="section-title">Building Stronger Tomorrow</h2>
             <p className="section-description">
-              We deliver premium industrial solutions with unmatched expertise, 
-              advanced technology, and a commitment to excellence that builds 
-              the infrastructure of tomorrow.
+              Trusted by leading industrial companies for delivering precision manufacturing,
+              steel fabrication, and large-scale engineering projects.
             </p>
           </div>
           <div className="header-right">
@@ -177,11 +167,11 @@ const Projects = () => {
         </div>
 
         {/* Logo Loop */}
-        <div className="logo-loop-container">
+        <div ref={logoContainerRef} className="logo-loop-container">
           <div ref={logoLoopRef} className="logo-loop">
             {clientLogos.concat(clientLogos).map((logo, index) => (
               <div key={index} className="client-logo">
-                <img src={logo.logo} alt={logo.name} />
+                <img src={logo.logo} alt={logo.name} loading="lazy" decoding="async" />
               </div>
             ))}
           </div>
@@ -190,7 +180,7 @@ const Projects = () => {
         </div>
 
         {/* Trust Section */}
-        <div className="trust-section">
+        {/* <div className="trust-section">
           <div className="trust-grid">
             {trustData.map((item, index) => (
               <div 
@@ -206,7 +196,7 @@ const Projects = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   )
