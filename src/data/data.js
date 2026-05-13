@@ -69,7 +69,7 @@ export const aboutFeatures = [
 export const statsData = [
   {
     icon: "fa-building",
-    number: "50+",
+    number: "500+",
     title: "Projects Completed",
     description: "Successful industrial solutions delivered worldwide"
   },
@@ -81,7 +81,7 @@ export const statsData = [
   },
   {
     icon: "fa-users",
-    number: "500+",
+    number: "50+",
     title: "Employees",
     description: "Skilled professionals dedicated to delivering excellence"
   }
