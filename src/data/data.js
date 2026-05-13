@@ -87,40 +87,6 @@ export const statsData = [
   }
 ];
 
-export const projectsData = [
-  {
-    id: 1,
-    title: "Dewi Plant Construction",
-    description: "A flagship refinery build with molten steel infrastructure and premium process controls.",
-    location: "Baroda, Maharashtra",
-    image: "/hero_01.png",
-    layout: "large"
-  },
-  {
-    id: 2,
-    title: "Industrial Pipeline Project",
-    description: "Precision pipeline engineering delivering efficient transport capacity across heavy industry.",
-    location: "Dahej, India",
-    image: "/image.png",
-    layout: "top-right"
-  },
-  {
-    id: 3,
-    title: "Bridge Infrastructure",
-    description: "Signature bridge construction framing steel, concrete and architectural lighting.",
-    location: "Surat, India",
-    image: "/hero_01.png",
-    layout: "bottom-left"
-  },
-  {
-    id: 4,
-    title: "Factory Structure Work",
-    description: "Heavy-duty manufacturing halls built for durability and intelligent production flows.",
-    location: "Pune, Maharashtra",
-    image: "/image.png",
-    layout: "bottom-right"
-  }
-];
 
 export const contactInfo = [
   {
